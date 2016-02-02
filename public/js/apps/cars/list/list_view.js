@@ -35,11 +35,11 @@ CarManager.module("CarsApp.List", function(List, CarManager, Backbone, Marionett
 		},
 
 		clearAddFormError: function(){
-				var $form = this.$el.find("[data-id=add-car-form]");
-				$form.find(".help-block.error").remove();
-				$form.find(".form-group.has-error").removeClass("has-error");
+			var $form = this.$el.find("[data-id=add-car-form]");
 
-				return this
+			$form.find(".help-block.error").remove();
+			$form.find(".form-group.has-error").removeClass("has-error");
+			return this
 		},
 
 		onSetFilterCriterion: function(criterion){
@@ -67,6 +67,7 @@ CarManager.module("CarsApp.List", function(List, CarManager, Backbone, Marionett
 
 		flash: function(cssClass){
 			var $view = this.$el;
+
 			$view.hide().toggleClass(cssClass).fadeIn(800, function(){
 				setTimeout(function(){
 					$view.toggleClass(cssClass)
