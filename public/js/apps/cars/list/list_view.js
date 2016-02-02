@@ -47,11 +47,11 @@ CarManager.module("CarsApp.List", function(List, CarManager, Backbone, Marionett
 		},
 
 		onWrongVin: function(error) {
-				var $controlGroup = this.$el.find(".js-car-vin").parent();
-				var $errorEl = $("<span>", { class: "help-block error", text: error });
+			var $controlGroup = this.$el.find(".js-car-vin").parent();
+			var $errorEl = $("<span>", { class: "help-block error", text: error });
 
-		this.clearAddFormError()
-				$controlGroup.prepend($errorEl).addClass("has-error");
+			this.clearAddFormError()
+			$controlGroup.prepend($errorEl).addClass("has-error");
 		}
 	});
 
