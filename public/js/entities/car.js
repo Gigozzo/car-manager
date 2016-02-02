@@ -75,8 +75,6 @@ CarManager.module("Entities", function(Entities, CarManager, Backbone, Marionett
 			// get car data from Edmunds
 			$.getJSON( "http://api.edmunds.com/v1/api/toolsrepository/vindecoder?fmt=json&api_key=9ez3tx9ms6tunncyvyah9pbr&vin=" + carVin)
 				.done(function(data) {
-					console.log( "second success" );
-					console.log(data);
 					defer.resolve({
 						vin:		carVin,
 						make:		data.styleHolder[0].makeName,

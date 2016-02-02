@@ -12,7 +12,6 @@ CarManager.module("CarsApp.Show", function(Show, CarManager, Backbone, Marionett
 
     editClicked: function(e){
       e.preventDefault();
-      console.log(this.model);
       this.trigger("car:edit", this.model);
     }
   });
