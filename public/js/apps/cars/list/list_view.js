@@ -108,6 +108,8 @@ CarManager.module("CarsApp.List", function(List, CarManager, Backbone, Marionett
 			});
 		},
 
+		onShow: function() { this.$el.DataTable(); },
+
 		onRenderCollection: function(){
 			this.attachHtml = function(collectionView, childView, index){
 				collectionView.$el.prepend(childView.el);

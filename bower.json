@@ -1,0 +1,26 @@
+{
+  "name": "car-manager",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Gigozzo/car-manager",
+  "authors": [
+    "Gigozzo <Gigozzo4@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone.marionette": "marionette#~2.4.4",
+    "bootstrap": "~3.3.6",
+    "bootstrap-table": "~1.10.0",
+    "datatables": "~1.10.10",
+    "jquery": "~2.2.0",
+    "jquery-ui": "~1.11.4",
+    "spin": "~1.1.6"
+  }
+}

@@ -3,31 +3,35 @@
 <head>
 	<meta charset="utf-8">
 	<title>Car Manager</title>
-	<link href="./public/css/bootstrap.min.css" rel="stylesheet">
-	<link href="./public/css/application.css" rel="stylesheet">
+	<!--<link href="./public/css/bootstrap.min.css" rel="stylesheet">-->
+	<link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="./public/css/dataTables.bootstrap.min.css" rel="stylesheet">
+	<!--<link href="./public/css/application.css" rel="stylesheet">-->
 	<link href="./public/css/jquery-ui.min.css" rel="stylesheet">
 </head>
 
 <body>
 
-<div id="app-container">
+<div id="app-container"  style="padding-top: 20px;">
 	<div id="main-region" class="container">This page not found</div>
 	<div id="dialog-region"></div>
 </div>
 
 <!-- Head for list of cars -->
 <script type="text/template" id="car-list">
+<table class="table table-striped table-bordered" cellspacing="0" width="100%">
 	<thead>
 	<tr>
 		<th>VIN</th>
 		<th>Make</th>
 		<th>Model</th>
 		<th>Year</th>
-		<th></th>
+		<th hidden></th>
 	</tr>
 	</thead>
 	<tbody>
 	</tbody>
+</table>
 </script>
 
 <!-- This message shows, when there is no one car -->
@@ -119,7 +123,7 @@
 <!-- Panel on main layout -->
 <script type="text/template" id="car-list-panel">
 	<!-- Add car form -->
-	<form data-id="add-car-form" class="form-search form-inline pull-right">
+	<form data-id="add-car-form" class="form-search form-inline pull-right" style="padding-bottom: 20px;">
 		<div class="form-group">
 			<input type="text" placeholder="VIN" class="form-control js-car-vin">
 			<button type="submit" class="btn">Add car</button>
@@ -127,10 +131,10 @@
 	</form>
 
 	<!-- Filter car form -->
-	<form data-id="filter-form" class="form-search form-inline pull-left">
+	<form data-id="filter-form" class="form-search form-inline pull-left" style="padding-bottom: 20px;">
 		<div class="form-group">
 			<input type="text" class="form-control js-filter-criterion">
-			<button type="submit" class="btn">Filter cars</button>
+			<button type="submit" class="btn">Filter cars by marionette</button>
 		</div>
 	</form>
 </script>
@@ -145,6 +149,8 @@
 <script src="./public/js/vendor/backbone.marionette.js"></script>
 <script src="./public/js/vendor/spin.js"></script>
 <script src="./public/js/vendor/spin.jquery.js"></script>
+<script src="./public/js/vendor/jquery.dataTables.min.js"></script>
+<script src="./public/js/vendor/dataTables.bootstrap.min.js"></script>
 
 <script src="./public/js/app.js"></script>
 <script src="./public/js/apps/config/storage/localstorage.js"></script>
