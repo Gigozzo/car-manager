@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Car Manager</title>
+	<link href="./public/css/bootstrap.min.css" rel="stylesheet">
+	<link href="./public/css/application.css" rel="stylesheet">
+	<link href="./public/css/jquery-ui.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="app-container">
+	<div id="main-region" class="container">This page not found</div>
+	<div id="dialog-region"></div>
+</div>
+
+<!-- Head for list of cars -->
+<script type="text/template" id="car-list">
+	<thead>
+	<tr>
+		<th>VIN</th>
+		<th>Make</th>
+		<th>Model</th>
+		<th>Year</th>
+		<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	</tbody>
+</script>
+
+<!-- This message shows, when there is no one car -->
+<script type="text/template" id="car-list-none">
+	<td colspan="5">Add cars for display.</td>
+</script>
+
+<!-- Row on mail car list -->
+<script type="text/template" id="car-list-item">
+	<td><%- vin %></td>
+	<td><%- make %></td>
+	<td><%- model %></td>
+	<td><%- year %></td>
+	<td class="btn-group btn-group-sm" role="group">
+		<a href="#cars/<%- vin %>" class="btn btn-info js-show" role="button">Show</a>
+		<a href="#cars/<%- vin %>/edit" class="btn btn-warning js-edit" role="button">Edit</a>
+		<button class="btn btn-danger js-delete" role="button">Delete</button>
+	</td>
+</script>
+
+<!-- This message shows, when requested car doesn't exist -->
+<script type="text/template" id="missing-car-view">
+	<div class="alert alert-error">This car doesn't exist !</div>
+</script>
+
+<!-- Show car details -->
+<script type="text/template" id="car-view">
+	<h1>Details <%- vin %></h1>
+	<p><strong>Make:</strong> <%- make %></p>
+	<p><strong>Model:</strong> <%- model %></p>
+	<p><strong>Year:</strong> <%- year %></p>
+	<p><strong>Trim:</strong> <%- trim %></p>
+	<p><strong>Body type:</strong> <%- bodyType %></p>
+	<p><strong>Gross weight:</strong> <%- grossWeight %></p>
+	<a href="#cars/<%- vin %>/edit" class="btn btn-warning js-edit">Edit this car</a>
+</script>
+
+<!-- Common loader -->
+<script type="text/template" id="loading-view">
+	<h1><%- title %></h1>
+	<p><%- message %></p>
+	<div id="spinner"></div>
+</script>
+
+<!-- Default car edit form -->
+<script type="text/template" id="car-form">
+	<form>
+		<div class="form-group">
+			<label for="car-make" class="control-label">Make*:</label>
+			<input id="car-make" class="form-control" name="make" type="text" value="<%- make %>"/>
+		</div>
+		<div class="form-group">
+			<label for="car-model" class="control-label">Model*:</label>
+			<input id="car-model" class="form-control" name="model" type="text" value="<%- model %>"/>
+		</div>
+		<div class="form-group">
+			<label for="car-year" class="control-label">Year*:</label>
+			<input id="car-year" class="form-control" name="year" type="text" value="<%- year %>"/>
+		</div>
+		<div class="form-group">
+			<label for="car-trim" class="control-label">Trim:</label>
+			<input id="car-trim" class="form-control" name="trim" type="text" value="<%- trim %>"/>
+		</div>
+		<div class="form-group">
+			<label for="car-bodyType" class="control-label">Body type:</label>
+			<input id="car-bodyType" class="form-control" name="bodyType" type="text" value="<%- bodyType %>"/>
+		</div>
+		<div class="form-group">
+			<label for="car-grossWeight" class="control-label">Gross weight:</label>
+			<input id="car-grossWeight" class="form-control" name="grossWeight" type="text" value="<%- grossWeight %>"/>
+		</div>
+		<button class="btn btn-success js-submit">Save</button>
+		<button class="btn js-cancel">Cancel</button>
+	</form>
+</script>
+
+<!-- Confirmation alert (When car already exist) -->
+<script type="text/template" id="alert-confirm">
+	<button class="btn btn-success js-yes">yes</button>
+	<button class="btn js-no">no</button>
+</script>
+
+<!-- Main layout -->
+<script type="text/template" id="car-list-layout">
+	<div id="panel-region"></div>
+	<div id="cars-region"></div>
+</script>
+
+<!-- Panel on main layout -->
+<script type="text/template" id="car-list-panel">
+	<!-- Add car form -->
+	<form data-id="add-car-form" class="form-search form-inline pull-right">
+		<div class="form-group">
+			<input type="text" placeholder="VIN" class="form-control js-car-vin">
+			<button type="submit" class="btn">Add car</button>
+		</div>
+	</form>
+
+	<!-- Filter car form -->
+	<form data-id="filter-form" class="form-search form-inline pull-left">
+		<div class="form-group">
+			<input type="text" class="form-control js-filter-criterion">
+			<button type="submit" class="btn">Filter cars</button>
+		</div>
+	</form>
+</script>
+
+<script src="./public/js/vendor/jquery.js"></script>
+<script src="./public/js/vendor/jquery-ui.min.js"></script>
+<script src="./public/js/vendor/json2.js"></script>
+<script src="./public/js/vendor/underscore.js"></script>
+<script src="./public/js/vendor/backbone.js"></script>
+<script src="./public/js/vendor/backbone.syphon.js"></script>
+<script src="./public/js/vendor/backbone.localstorage.js"></script>
+<script src="./public/js/vendor/backbone.marionette.js"></script>
+<script src="./public/js/vendor/spin.js"></script>
+<script src="./public/js/vendor/spin.jquery.js"></script>
+
+<script src="./public/js/app.js"></script>
+<script src="./public/js/apps/config/storage/localstorage.js"></script>
+<script src="./public/js/entities/common.js"></script>
+<script src="./public/js/entities/car.js"></script>
+<script src="./public/js/common/views.js"></script>
+
+<script src="./public/js/apps/cars/cars_app.js"></script>
+<script src="./public/js/apps/cars/common/views.js"></script>
+<script src="./public/js/apps/cars/list/list_view.js"></script>
+<script src="./public/js/apps/cars/list/list_controller.js"></script>
+<script src="./public/js/apps/cars/show/show_view.js"></script>
+<script src="./public/js/apps/cars/show/show_controller.js"></script>
+<script src="./public/js/apps/cars/edit/edit_view.js"></script>
+<script src="./public/js/apps/cars/edit/edit_controller.js"></script>
+
+<script type="text/javascript">CarManager.start();</script>
+</body>
+</html>
