@@ -36,7 +36,6 @@ CarManager.module("CarsApp.List", function(List, CarManager, Backbone, Marionett
 
 		clearAddFormError: function(){
 			var $form = this.$el.find("[data-id=add-car-form]");
-
 			$form.find(".help-block.error").remove();
 			$form.find(".form-group.has-error").removeClass("has-error");
 			return this
@@ -49,7 +48,6 @@ CarManager.module("CarsApp.List", function(List, CarManager, Backbone, Marionett
 		onWrongVin: function(error) {
 			var $controlGroup = this.$el.find(".js-car-vin").parent();
 			var $errorEl = $("<span>", { class: "help-block error", text: error });
-
 			this.clearAddFormError()
 			$controlGroup.prepend($errorEl).addClass("has-error");
 		}
@@ -67,7 +65,6 @@ CarManager.module("CarsApp.List", function(List, CarManager, Backbone, Marionett
 
 		flash: function(cssClass){
 			var $view = this.$el;
-
 			$view.hide().toggleClass(cssClass).fadeIn(800, function(){
 				setTimeout(function(){
 					$view.toggleClass(cssClass)
