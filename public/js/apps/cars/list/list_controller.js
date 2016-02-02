@@ -18,9 +18,7 @@ CarManager.module("CarsApp.List", function(List, CarManager, Backbone, Marionett
 						var criterion = filterCriterion.toLowerCase();
 						return function(car){
 							if(car.get("make").toLowerCase().indexOf(criterion) !== -1
-								|| car.get("model").toLowerCase().indexOf(criterion) !== -1
-								|| car.get("year").toLowerCase().indexOf(criterion) !== -1
-								|| car.get("vin").toLowerCase().indexOf(criterion) !== -1){
+								|| car.get("model").toLowerCase().indexOf(criterion) !== -1){
 									return car;
 							}
 						};
