@@ -96,22 +96,11 @@ CarManager.module("CarsApp.List", function(List, CarManager, Backbone, Marionett
 		childView: List.Car,
 		childViewContainer: "tbody",
 
-		events:{
-
-		},
-
-		initialize: function(){
-			this.listenTo(this.collection, "reset", function(){
-				this.attachHtml = function(collectionView, childView, index){
-					collectionView.$el.append(childView.el);
-				}
-			});
-		},
-
-		onShow: function() { this.$el.DataTable(); },
+		onShow: function() { console.log('<<< SHOW >>>'); this.tablePlugin = this.$el.DataTable();},
 
 		onRenderCollection: function(){
 			this.attachHtml = function(collectionView, childView, index){
+				this.tablePlugin.row.add(childView.model.attributes);
 				collectionView.$el.prepend(childView.el);
 			}
 		}
