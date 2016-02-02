@@ -25,7 +25,7 @@ CarManager.module("Entities", function(Entities, CarManager, Backbone, Marionett
 				errors.year = "should be from 1980 to 2099";
 			}
 
-			if (! new RegExp(/^\d*$/).test(attrs.grossWeight)) {
+			if (attrs.grossWeight && (! new RegExp(/^\d*$/).test(attrs.grossWeight))) {
 				errors.grossWeight = "should be a number";
 			}
 
