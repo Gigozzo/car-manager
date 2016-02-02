@@ -62,11 +62,13 @@ CarManager.module("CarsApp.List", function(List, CarManager, Backbone, Marionett
 
 				});
 
+				// Listener for filtering cars
 				carsListPanel.on("cars:filter", function(filterCriterion){
 					filteredCars.filter(filterCriterion);
 					CarManager.trigger("cars:filter", filterCriterion);
 				});
 
+				// Show regions in main layout
 				carsListLayout.on("show", function(){
 					carsListLayout.panelRegion.show(carsListPanel);
 					carsListLayout.carsRegion.show(carsListView);
